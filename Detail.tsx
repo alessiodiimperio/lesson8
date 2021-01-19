@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { DetailViewRouteProp } from './App'
 
-export default function Detail({ route }: { route: any }) {
+export default function Detail({ route }: { route: DetailViewRouteProp }) {
     const [item, setItem] = useState<ListItem | null>(null);
     const { itemId } = route.params
 

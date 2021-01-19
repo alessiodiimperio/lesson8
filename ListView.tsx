@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
+import { ListViewNavigationProp } from './App'
 import ListItem from "./ListItem";
 
-export default function ListView({navigation}:{navigation:any}) {
+export default function ListView({navigation}:{navigation:ListViewNavigationProp}) {
     const [items, setItems] = useState<ListItem[]>([]);
 
     useEffect(() => {
