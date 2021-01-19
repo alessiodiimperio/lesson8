@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 import ListItem from "./ListItem";
 
-export default function ListView({navigation}:{ navigation:ListViewNavigationProp}) {
+export default function ListView({navigation}:{navigation:any}) {
     const [items, setItems] = useState<ListItem[]>([]);
 
     useEffect(() => {
@@ -12,8 +12,8 @@ export default function ListView({navigation}:{ navigation:ListViewNavigationPro
             .catch(console.log);
     }, []);
 
-    const navigateToDetail : (userId:string) => void = (userId) => {
-        navigation.navigate('Detail', {userId})
+    const navigateToDetail: (itemId:number) => void = (itemId) => {
+        navigation.navigate('Detail', { itemId })
     }
 
     return (
@@ -21,7 +21,7 @@ export default function ListView({navigation}:{ navigation:ListViewNavigationPro
             <FlatList
                 style={styles.list}
                 data={items}
-                renderItem={({ item }) => <ListItem item={item} onPress={navigateToDetail} />}
+                renderItem={({ item }) => <ListItem item={item} onNavigate={(itemId:number) => navigateToDetail(itemId)} />}
                 keyExtractor={(item) => item.id.toString()}
             />
         </View>

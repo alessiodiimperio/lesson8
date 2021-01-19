@@ -4,14 +4,12 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 
 
 
-export default function ListItem({item}:{ item:ListItem}) {
+export default function ListItem({item, onNavigate}:{ 
+    item:ListItem, 
+    onNavigate:(itemId:number)=>void }) {
 
-    const navigateToDetail = () => {
-        
-    }
-
-    return (
-        <TouchableHighlight onPress={() => navigateToDetail} style={styles.container}>
+        return (
+        <TouchableHighlight onPress={() => onNavigate(item.id)} style={styles.container}>
             <View style={styles.content}>
                 <Image style={styles.image} source={{ uri: item?.image }} />
                 <View style={styles.infoContainer}>
